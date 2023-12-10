@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.Arrays;
+
+
+
 public class MainActivity extends AppCompatActivity {
 
     // поля
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         // привязка разметки к полям
         output = findViewById(R.id.output);
 
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         output.setText(maxWord(poemArray));
         output.append(minWord(poemArray));
         output.append(numberOfLetters(poemArray));
+        output.append(sortPoem(poemArray));
     }
 
     // метод поиска самого длинного слова
@@ -55,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return worldResult + wordArray[indexMaxLength] + "\" длинной " + maxLength + " букв(а)\n";
+    }
+
+    // метод сортировки
+    private String sortPoem(String[] poem){
+        Arrays.sort(poem);
+
+        String resultPoem = Arrays.toString(poem);
+        return "Отсортированный стих\n" + resultPoem;
     }
 
     // метод поиска самого короткого слова
